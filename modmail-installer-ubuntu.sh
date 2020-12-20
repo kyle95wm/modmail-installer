@@ -98,7 +98,7 @@ CONNECTION_URI=$connect_uri
 EOF
     fi
 touch "$PWD"/.modmail-installer-env-set
-echo "All done! Now, please re-run this script for one final time."
+echo "All done! Now, please re-run this script for one final time. Before you do this, please run: source .profile"
 exit 1
 fi
 pip3 install pipenv pipenv install
