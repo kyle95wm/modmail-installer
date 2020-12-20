@@ -33,7 +33,7 @@ fi
 if [ ! -f "$PWD"/.modmail-installer-init ] ; then
     echo "Welcome to the Modmail installer! This installer will walk you through the process of installing the bot to this server. Please keep in mind that you will still need to deploy a log viewer to Heroku for this to work. You will be asked about it later on in this installation."
     echo "PLEASE NOTE: There may be some cases where your sudo password is required. Please keep an eye out for this and try not to step too far away from your machine, as to not miss this."
-    read -pr "Please press ENTER to continue: "
+
     # We create a file that will skip the above prompts if the script needs to be re-ran for whatever reason
     # Files like these will be created throughout the installation as sort of "checkpoints" which will later be cleaned up.
     touch "$PWD"/.modmail-installer-init
@@ -75,10 +75,10 @@ fi
 read -rp "Please input your user ID. This is the ID that will be given owner permissins for the bot: " owner_id
 read -rp "Lastly, please provide your full mongo connection URI according to the installation guide: " connect_uri
 echo "Thank you! That's all the information I will need for now."
-
+if [ ! -f "$PWD"/.modmail-installer-env-set ] ; then
 # We will now input all of this into a new .env file
 touch $HOME/modmail/.env
-if [ $setup_type == "staff" ] ; then
+    if [ $setup_type == "staff" ] ; then
 cat > $HOME/modmail/.env <<EOF
 TOKEN=$token
 LOG_URL=$log_url
@@ -87,8 +87,8 @@ MODMAIL_GUILD_ID=$staff_server
 OWNERS=$owner_id
 CONNECTION_URI=$connect_uri
 EOF
-fi
-if [ $setup_type == "single" ] ; then
+    fi
+    if [ $setup_type == "single" ] ; then
 cat > $HOME/modmail/.env <<EOF
 TOKEN=$token
 LOG_URL=$log_url
@@ -96,7 +96,11 @@ GUILD_ID=$main_server
 OWNERS=$owner_id
 CONNECTION_URI=$connect_uri
 EOF
+    fi
+touch "$PWD"/.modmail-installer-env-set
+echo "All done! Now, please re-run this script for one final time."
+exit 1
 fi
-pip3 install pipenv && pipenv install
+pip3 install pipenv pipenv install
 echo "All done! You can now run your bot by cd'ing to the modmail directory (cd modmail/) and running the folowing command: pipenv run python3.7 bot.py"
 touch "$PWD"/.modmail-installed
