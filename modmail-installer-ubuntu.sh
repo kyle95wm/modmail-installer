@@ -92,3 +92,4 @@ EOF
 fi
 pip3 install pipenv && pipenv install
 echo "All done! You can now run your bot by cd'ing to the modmail directory (cd modmail/) and running the folowing command: pipenv run python3.7 bot.py"
+touch "$PWD"/.modmail-installed
