@@ -68,6 +68,13 @@ read -rp "Please respond with either the word single OR staff, for your server s
 # We'll take the .env.example contents and set them based on responses after this
 read -rp "What is your bot's token?: " token
 read -rp "Please input the URL for your log viewer. The correct format would be https://log-viewer-name.herokuapp.com: " log_url
+read -rp "Please input the server IDfor the main server you will be having the bot on.: " main_server
+if [ $setup_type == "staff" ] ; then
+    read -rp "Please input your staff server ID: " staff_server
+fi
+read -rp "Please input your user ID. This is the ID that will be given owner permissins for the bot: " owner_id
+read -rp "Lastly, please provide your full mongo connection URI according to the installation guide: " connect_uri
+echo "Thank you! That's all the information I will need for now."
 
 # We will now input all of this into a new .env file
 touch $HOME/modmail/.env
