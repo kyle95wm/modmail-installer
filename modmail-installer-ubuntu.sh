@@ -10,6 +10,10 @@ echo "Installing modmail"
 git clone https://github.com/kyb3r/modmail.git
 echo "Done! Installing Deps"
 cd modmail
+if ! which pipenv ; then
+	echo "ERROR! Looks like I had trouble finding pipenv's binary. It might not be in your PATH variable. Try to source your .profile file in your home folder by running: source .profile, then try again"
+	exit 1
+fi
 pipenv install
 echo "Installed Deps!"
 cd ..
