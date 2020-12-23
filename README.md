@@ -7,10 +7,10 @@ This repo houses the script that allows you to install Modmail. You will need to
 
 Run the following commands:
 
-```sudo apt update && sudo apt upgrade -y && sudo apt install software-properties-common python3.7 python3-pip git -y```
+`sudo apt update && sudo apt upgrade -y && sudo apt install software-properties-common python3.7 python3-pip git -y`
 
 Once you've done that, run the modmail-installer.sh script by making it executable and then running it:
-```chmod +x ./modmail-installer-ubuntu.sh && ./modmail-installer-ubuntu.sh```
+`chmod +x ./modmail-installer-ubuntu.sh && ./modmail-installer-ubuntu.sh`
 
 Installation should complete without a hitch.
 
