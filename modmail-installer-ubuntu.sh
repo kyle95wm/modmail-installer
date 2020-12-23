@@ -9,6 +9,8 @@ pip3 install pipenv
 echo "Installing modmail"
 git clone https://github.com/kyb3r/modmail.git
 echo "Done! Installing Deps"
+# We'll make sure to update our $PATH to include pipenv's location
+source $HOME/.profile
 cd modmail
 if ! which pipenv ; then
 	echo "ERROR! Looks like I had trouble finding pipenv's binary. It might not be in your PATH variable. Try to source your .profile file in your home folder by running: source .profile, then try again"
