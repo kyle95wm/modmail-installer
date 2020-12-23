@@ -35,7 +35,7 @@ read gid
 echo GUILD_ID=$gid >>.env
 echo "Enter MODMAIL_GUILD_ID [This is only used if you have a staff server. If you don't have one, just press ENTER.]"
 read mgid
-if [ ! -z "$mgid" ] ;
+if [ ! -z "$mgid" ] ; then
     echo MODMAIL_GUILD_ID=$mgid >>.env
 fi
 echo "Enter Owner ID's [Comma separated user IDs of people that are allowed to use owner only commands. (eval and update).]"
